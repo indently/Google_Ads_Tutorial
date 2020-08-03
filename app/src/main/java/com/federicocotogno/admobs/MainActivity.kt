@@ -16,6 +16,8 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
+    //hello
+
     private val TAG = "MainActivity"
     private var totalCoins = 0
     private var adLoadProgress = 0
