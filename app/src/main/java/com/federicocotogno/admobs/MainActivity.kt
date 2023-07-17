@@ -33,6 +33,7 @@ class MainActivity : AppCompatActivity() {
         MobileAds.initialize(this)
 
         bannerAd()
+        bannerAd2()
         rewardedAd()
         interstitialAd()
     }
@@ -103,6 +104,47 @@ class MainActivity : AppCompatActivity() {
 
     private fun bannerAd() {
         mAdView = findViewById(R.id.adView)
+        val adRequest = AdRequest.Builder().build()
+        mAdView.loadAd(adRequest)
+
+        mAdView.adListener = object: AdListener() {
+            override fun onAdLoaded() {
+                // Code to be executed when an ad finishes loading.
+                Log.d(TAG,"Ad loaded")
+                adsLoadedProgress()
+            }
+
+            override fun onAdFailedToLoad(errorCode : Int) {
+                // Code to be executed when an ad request fails.
+                Log.d(TAG,"Ad failed to load")
+            }
+
+            override fun onAdOpened() {
+                // Code to be executed when an ad opens an overlay that
+                // covers the screen.
+                Log.d(TAG,"Ad opened")
+            }
+
+            override fun onAdClicked() {
+                // Code to be executed when the user clicks on an ad.
+                Log.d(TAG,"Ad clicked")
+            }
+
+            override fun onAdLeftApplication() {
+                // Code to be executed when the user has left the app.
+                Log.d(TAG,"User left app on ad")
+            }
+
+            override fun onAdClosed() {
+                // Code to be executed when the user is about to return
+                // to the app after tapping on an ad.
+                Log.d(TAG,"Ad closed")
+            }
+        }
+    }
+
+    private fun bannerAd2() {
+        mAdView = findViewById(R.id.adView2)
         val adRequest = AdRequest.Builder().build()
         mAdView.loadAd(adRequest)
 
